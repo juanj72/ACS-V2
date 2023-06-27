@@ -3,8 +3,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Productos</h1>
-    <p class="mb-4">Aquí encontrarás el listado de todos los productos regisstrados
+    <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
+    <p class="mb-4">Aquí encontrarás el listado de todos los clientes registrados
     </p>
 
     <!-- DataTales Example -->
@@ -22,35 +22,29 @@
                         
                         <tr>
                             <th>Id</th>
+                            <th>Documento</th>
                             <th>Nombre</th>
-                            <th>Valor neto</th>
-                            <th>Valor público</th>
-                            <th>Cantidad</th>
-                            <th>Categoría</th>
+                            <th>Apellido</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Id</th>
+                            <th>Documento</th>
                             <th>Nombre</th>
-                            <th>Valor neto</th>
-                            <th>Valor público</th>
-                            <th>Cantidad</th>
-                            <th>Categoría</th>
+                            <th>Apellido</th>
                             <th>Acción</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
-                        {% for producto in productos %}
+                        {% for cliente in clientes %}
                         <tr>
-                            <td>{{producto.id}}</td>
-                            <td>{{producto.nombre}}</td>
-                            <td>{{producto.valor_neto}}</td>
-                            <td>{{producto.valor_publico}}</td>
-                            <td>{{producto.cantidad}}</td>
-                            <td>{{producto.categoria_id}}</td>
+                            <td>{{cliente.id}}</td>
+                            <td>{{cliente.documento}}</td>
+                            <td>{{cliente.nombre}}</td>
+                            <td>{{cliente.apellido}}</td>
                             <td>
                             <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
                             <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>

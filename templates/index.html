@@ -52,9 +52,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                <a class="nav-link" href="{% url 'inicio' %}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span></a>
             </li>
 
             <!-- Divider -->
@@ -69,13 +69,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clientes</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="{% url 'clientes' %}">Ver clientes</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -95,25 +95,51 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fa-solid fa-box-open"></i>
                     <span>Productos</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">..</h6>
-                        <a class="collapse-item" href="{% url 'productos' %}"><i class="fas fa-fw fa-folder"></i> Ver productos</a>
+                        <a class="collapse-item" href="{% url 'productos' %}"><i class="fa-solid fa-boxes-packing"></i> Ver productos</a>
                         <a class="collapse-item" href=""><i class="fas fa-fw fa-folder"></i> Ver categorias</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+          
+
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span>Ventas</span>
+                </a>
+                <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">..</h6>
+                        <a class="collapse-item" href=""><i class="fa-solid fa-hand-holding-dollar"></i> Realizar venta</a>
+                        <a class="collapse-item" href=""><i class="fas fa-fw fa-folder"></i> Listar ventas</a>
+                    </div>
+                </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Reportes</span>
+                </a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">..</h6>
+                        <a class="collapse-item" href="{% url 'productos' %}"><i class="fa-solid fa-boxes-packing"></i> Ver productos</a>
+                        <a class="collapse-item" href=""><i class="fas fa-fw fa-folder"></i> Ver categorias</a>
+                    </div>
+                </div>
+            </li>
+
+          
    
           
 
@@ -158,7 +184,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user.first_name}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{% static 'img/undraw_profile.svg' %}">
                             </a>
