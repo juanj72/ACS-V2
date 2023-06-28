@@ -1,0 +1,65 @@
+{% extends 'index.html' %}{% block content %}
+
+
+<h1>Valor acumulado: $0</h1>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                   
+    <thead>
+        
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Valor neto</th>
+            <th>Valor público</th>
+            <th>Cantidad</th>
+            <th>Número de recibo</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Valor neto</th>
+            <th>Valor público</th>
+            <th>Cantidad</th>
+            <th>Número de recibo</th>
+            <th>Acción</th>
+        </tr>
+    </tfoot>
+    <tbody>
+
+        {% for producto in productos %}
+        <tr>
+            <td>{{producto.id}}</td>
+            <td>{{producto.producto.nombre}}</td>
+            <td>{{producto.producto.valor_neto}}</td>
+            <td>{{producto.producto.valor_publico}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>{{producto.recibo.id}}</td>
+            <td>
+            <a href="{% url 'eliminardetalle' producto.id producto.recibo.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+        </tr>
+
+        {%endfor%}
+
+     
+      
+
+
+
+    </tbody>
+</table>
+
+<hr>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{formulario}}
+    <hr>
+    <button class="btn btn-block btn-success" type="submit"><i class="fa-solid fa-plus"></i> Agregar</button>
+    <button class="btn btn-block btn-warning" ><i class="fa-solid fa-circle-check"></i> Cerrar recibo</button>
+</form>
+
+{% endblock %}

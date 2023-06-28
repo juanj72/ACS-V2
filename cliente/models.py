@@ -4,7 +4,7 @@ from django.db import models
 
 
 class cliente (models.Model):
-    documento = models.IntegerField()
+    documento = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
     class Meta:
