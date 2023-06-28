@@ -48,7 +48,7 @@ def detalleventa(request,reb):
         else:
             formulario.errors()
 
-    return render (request, 'ventas/detalle.html',{'detalle':reb,'formulario':formulario,'productos':productos})
+    return render (request, 'ventas/detalle.html',{'detalle':reb,'formulario':formulario,'productos':productos,'error':error})
 
 
 

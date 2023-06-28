@@ -7,23 +7,23 @@
     <thead>
         
         <tr>
-            <th>Id</th>
+           
             <th>Nombre</th>
-            <th>Valor neto</th>
+            
             <th>Valor público</th>
             <th>Cantidad</th>
-            <th>Número de recibo</th>
+          
             <th>Acción</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>Id</th>
+         
             <th>Nombre</th>
-            <th>Valor neto</th>
+     
             <th>Valor público</th>
             <th>Cantidad</th>
-            <th>Número de recibo</th>
+           
             <th>Acción</th>
         </tr>
     </tfoot>
@@ -31,12 +31,15 @@
 
         {% for producto in productos %}
         <tr>
-            <td>{{producto.id}}</td>
+           
             <td>{{producto.producto.nombre}}</td>
-            <td>{{producto.producto.valor_neto}}</td>
-            <td>{{producto.producto.valor_publico}}</td>
+
+            <td>{{producto.producto.valor_publico }}</td>
+         
+           
+            
             <td>{{producto.cantidad}}</td>
-            <td>{{producto.recibo.id}}</td>
+           
             <td>
             <a href="{% url 'eliminardetalle' producto.id producto.recibo.id %}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
             </td>
@@ -61,5 +64,21 @@
     <button class="btn btn-block btn-success" type="submit"><i class="fa-solid fa-plus"></i> Agregar</button>
     <button class="btn btn-block btn-warning" ><i class="fa-solid fa-circle-check"></i> Cerrar recibo</button>
 </form>
+
+{% if error %}
+
+
+  <script>
+ Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'La cantidad supera el limite en stock',
+ 
+})
+  </script>
+
+{% endif %}
+
+
 
 {% endblock %}
