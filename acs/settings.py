@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'user',
     'producto',
     'cliente',
-    'fontawesomefree'
+    'fontawesomefree',
+    'venta'
 ]
 
 MIDDLEWARE = [

@@ -3,8 +3,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
-    <p class="mb-4">Aquí encontrarás el listado de todos los clientes registrados
+    <h1 class="h3 mb-2 text-gray-800">Categorías</h1>
+    <p class="mb-4">Aquí encontrarás el listado de todas las categorías registradas
     </p>
 
     <!-- DataTales Example -->
@@ -15,39 +15,36 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <a href="" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Agregar</a>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                    
                     <thead>
                         
                         <tr>
                             <th>Id</th>
-                            <th>Documento</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Acción</th>
+                            
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Documento</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Acción</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
-                        {% for cliente in clientes %}
+                        {% for categoria in categorias %}
                         <tr>
-                            <td>{{cliente.id}}</td>
-                            <td>{{cliente.documento}}</td>
-                            <td>{{cliente.nombre}}</td>
-                            <td>{{cliente.apellido}}</td>
+                            <td>{{categoria.id}}</td>
+                            <td>{{categoria.nombre}}</td>
+                         
                             <td>
                             <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
                             <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                          
+                         
                             </td>
                         </tr>
 
