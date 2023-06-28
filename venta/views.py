@@ -62,3 +62,5 @@ def eliminardetail(request,id,reb):
     detail.delete()
 
     return redirect('detalle',re.id)
+
+
