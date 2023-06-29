@@ -4,6 +4,7 @@ urlpatterns = [
     path('seleccion/',venta,name='seleccion'),
     path('recibo/<int:client>',crearrecibo,name='crearrecibo'),
     path('detalle/<reb>',detalleventa,name='detalle'),
-    path('eliminar/<id>/<reb>',eliminardetail,name='eliminardetalle')
+    path('eliminar/<id>/<reb>',eliminardetail,name='eliminardetalle'),
+    path('cerrar/<id>',cerrarrecibo,name='cerrarRecibo')
 ]
  

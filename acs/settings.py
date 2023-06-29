@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'producto',
     'cliente',
     'fontawesomefree',
-    'venta'
+    'venta',
+     'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 

@@ -16,9 +16,12 @@ def crearCliente(request):
     formulario = formulario_cliente(request.POST or None)
 
     if request.method == 'POST':
-        dato=formulario.save()
+        if formulario.is_valid():
+            dato=formulario.save()
 
-        print(dato.id)
-        return redirect('crearrecibo',dato.id)
+            print(dato.id)
+            return redirect('crearrecibo',dato.id)
+        else:
+            formulario.errors
 
     return render (request,'clientes/crearCliente.html',{'formulario':formulario})
