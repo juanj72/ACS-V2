@@ -29,7 +29,8 @@ def detalleventa(request,reb):
 
     re = recibo.objects.get(id=reb)
     if re.estado.id!=1:
-        return HttpResponse('404, PAGINA NO ENCONTRADA')
+        return HttpResponse('404')
+       
     else:
         productos=detalle.objects.filter(recibo = re).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
         formulario = detalleVentaForm(request.POST or None,initial={'recibo':re})
@@ -131,7 +132,7 @@ def cerrarrecibo(request,id):
     recibos = recibo.objects.get(id=id)
     recibos.estado = estado.objects.get(id=2)
     recibos.save()
-    return redirect('seleccion')
+    return redirect('detalle_recibo',id)
 
 
 def anular(request,id):
@@ -154,12 +155,22 @@ def anular(request,id):
                 reb.estado=estados
                 reb.save()
                 formulario.save()
+                return redirect('seleccion')
             else:
                 reb.estado=estados
                 reb.save()
                 formulario.save()
+                return redirect('seleccion')
         else:
             formulario.errors
             
 
     return render(request,'ventas/anular.html',{'formulario':formulario})
+
+
+def detalle_recibo(request,id):
+    recibos = recibo.objects.get(id=id)
+    detalles=detalle.objects.filter(recibo=recibos).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
+    total = total_detalle(id)
+
+    return render (request,'ventas/recibo.html',{'detalle':detalles,'recibo':recibos,'total':total})
