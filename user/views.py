@@ -7,7 +7,8 @@ from django.shortcuts import render
 def index(request):
     return render(request,'index.html')
 
-def confirmacionventa(request):
-    return render(request,'confirmaciones/ventaok.html')
+def confirmacionventa(request,id):
+
+    return render(request,'confirmaciones/ventaok.html',{'id':id})
 
 

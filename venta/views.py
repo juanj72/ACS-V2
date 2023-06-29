@@ -132,7 +132,7 @@ def cerrarrecibo(request,id):
     recibos = recibo.objects.get(id=id)
     recibos.estado = estado.objects.get(id=2)
     recibos.save()
-    return redirect('detalle_recibo',id)
+    return redirect('okventa',id)
 
 
 def anular(request,id):
