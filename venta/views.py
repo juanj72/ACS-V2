@@ -60,9 +60,9 @@ def detalleventa(request,reb):
                         return redirect('detalle',reb)
 
                 else:
-                    formulario.errors()
+                    formulario.errors
             except:
-                formulario.errors()
+                formulario.errors
 
         return render (request, 'ventas/detalle.html',{'detalle':reb,'formulario':formulario,'productos':productos,'error':error,'total':detalle_total,'cerrar':validador})
 

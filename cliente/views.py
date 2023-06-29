@@ -25,3 +25,9 @@ def crearCliente(request):
             formulario.errors
 
     return render (request,'clientes/crearCliente.html',{'formulario':formulario})
+
+
+def asignarClienteVenta(request):
+    clientes = cliente.objects.all()
+
+    return render (request,'clientes/venta.html',{'clientes':clientes})
