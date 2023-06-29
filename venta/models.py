@@ -22,6 +22,10 @@ class detalle (models.Model):
     recibo = models.ForeignKey(recibo,on_delete=models.SET_NULL,null=True)
     fecha = models.DateTimeField(auto_now=True)
 
+class log_anulados(models.Model):
+    motivo = models.TextField()
+    recibo = models.ForeignKey(recibo,on_delete=models.SET_NULL,null=True)
+
 
 
     

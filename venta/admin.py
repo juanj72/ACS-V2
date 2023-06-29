@@ -5,3 +5,4 @@ from venta.models import *
 admin.site.register(estado)
 admin.site.register(detalle)
 admin.site.register(recibo)
+admin.site.register(log_anulados)

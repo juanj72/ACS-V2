@@ -132,3 +132,34 @@ def cerrarrecibo(request,id):
     recibos.estado = estado.objects.get(id=2)
     recibos.save()
     return redirect('seleccion')
+
+
+def anular(request,id):
+    detalles = detalle.objects.filter(recibo = id)
+    reb=recibo.objects.get(id=id)
+    if reb.estado.id==3:
+        return HttpResponse('404 :( , PAGINA NO ENCONTRADA')
+    estados=estado.objects.get(id=3)
+    formulario = anularForm(request.POST or None,initial={'recibo':reb})
+    print(len(detalles))
+
+    if request.method =='POST':
+        if formulario.is_valid:
+            
+            if len(detalles)>0:
+                for det in detalles:
+                    productos = producto.objects.get(id=det.producto.id)
+                    productos.cantidad = int(productos.cantidad)+int(det.cantidad)
+                    productos.save()
+                reb.estado=estados
+                reb.save()
+                formulario.save()
+            else:
+                reb.estado=estados
+                reb.save()
+                formulario.save()
+        else:
+            formulario.errors
+            
+
+    return render(request,'ventas/anular.html',{'formulario':formulario})

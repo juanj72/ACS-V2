@@ -5,6 +5,7 @@ urlpatterns = [
     path('recibo/<int:client>',crearrecibo,name='crearrecibo'),
     path('detalle/<reb>',detalleventa,name='detalle'),
     path('eliminar/<id>/<reb>',eliminardetail,name='eliminardetalle'),
-    path('cerrar/<id>',cerrarrecibo,name='cerrarRecibo')
+    path('cerrar/<id>',cerrarrecibo,name='cerrarRecibo'),
+    path('anular/<id>',anular,name = 'anular')
 ]
  

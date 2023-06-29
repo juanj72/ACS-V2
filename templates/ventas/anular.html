@@ -1,0 +1,14 @@
+{% extends 'index.html' %}{% block content %}
+<h2>Anular Recibo</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{formulario}}
+    <hr>
+    <button class="btn btn-block btn-primary" type="submit">Continuar</button>
+
+</form>
+<hr>
+
+
+
+{% endblock %}
