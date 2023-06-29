@@ -130,9 +130,12 @@ WHERE
 
 def cerrarrecibo(request,id):
     recibos = recibo.objects.get(id=id)
-    recibos.estado = estado.objects.get(id=2)
-    recibos.save()
-    return redirect('okventa',id)
+    if recibos.estado.id == 1:
+        recibos.estado = estado.objects.get(id=2)
+        recibos.save()
+        return redirect('okventa',id)
+    else:
+        return HttpResponse('404, PÁGINA NO ENCONTRADA')
 
 
 def anular(request,id):
@@ -174,3 +177,7 @@ def detalle_recibo(request,id):
     total = total_detalle(id)
 
     return render (request,'ventas/recibo.html',{'detalle':detalles,'recibo':recibos,'total':total})
+
+
+def listar(request):
+    return render(request,'ventas/verventas.html')

@@ -1,0 +1,76 @@
+{% extends 'index.html' %}{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Productos</h1>
+    <p class="mb-4">Aquí encontrarás el listado de todos los productos regisstrados
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
+        
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <a href="" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Agregar</a>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                   
+                    <thead>
+                        
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Valor neto</th>
+                            <th>Valor público</th>
+                            <th>Cantidad</th>
+                            <th>Categoría</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Valor neto</th>
+                            <th>Valor público</th>
+                            <th>Cantidad</th>
+                            <th>Categoría</th>
+                            <th>Acción</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{producto.id}}</td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.valor_neto}}</td>
+                            <td>{{producto.valor_publico}}</td>
+                            <td>{{producto.cantidad}}</td>
+                            <td>{{producto.categoria_id}}</td>
+                            <td>
+                            <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
+                            <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+
+                        {%endfor%}
+
+                     
+                      
+          
+       
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
