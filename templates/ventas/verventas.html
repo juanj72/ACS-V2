@@ -1,11 +1,14 @@
 {% extends 'index.html' %}{% block content %}
+{% load humanize %}
 
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Productos</h1>
-    <p class="mb-4">Aquí encontrarás el listado de todos los productos regisstrados
+    <h1 class="h3 mb-2 text-gray-800">Ventas</h1>
+    <p class="mb-4">Recibos registrados
     </p>
+
+    
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -13,48 +16,57 @@
             <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
         
         </div>
+
+        <form action="" class="" >
+            <label for="">Fecha inicio</label>
+            <input type="date">
+            <label for="">Fecha fin</label>
+            <input type="date">
+            <button class="btn btn-primary" > consultar</button>
+        </form>
+
         <div class="card-body">
             <div class="table-responsive">
-                <a href="" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Agregar</a>
+                
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                    
                     <thead>
                         
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Valor neto</th>
-                            <th>Valor público</th>
-                            <th>Cantidad</th>
-                            <th>Categoría</th>
+                            <th>Número de recibo</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Documento</th>
+                            <th>Total</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Valor neto</th>
-                            <th>Valor público</th>
-                            <th>Cantidad</th>
-                            <th>Categoría</th>
+                            <th>Número de recibo</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Documento</th>
+                            <th>Total</th>
                             <th>Acción</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
-                        {% for producto in productos %}
+                        {% for recibo in recibos %}
                         <tr>
-                            <td>{{producto.id}}</td>
-                            <td>{{producto.nombre}}</td>
-                            <td>{{producto.valor_neto}}</td>
-                            <td>{{producto.valor_publico}}</td>
-                            <td>{{producto.cantidad}}</td>
-                            <td>{{producto.categoria_id}}</td>
+                            <td>{{recibo.numero_recibo}}</td>
+                            <td>{{recibo.estado}}</td>
+                            <td>{{recibo.fecha_recibo}}</td>
+                            <td>{{recibo.cliente}}</td>
+                            <td>{{recibo.documento}}</td>
+                            <td>$ {{recibo.total |intcomma }}</td>
                             <td>
-                            <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
-                            <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="" class="btn btn-success" ><i class="fa-solid fa-eye"></i></a>
+                            <a href="" class="btn btn-primary"><i class="fa-solid fa-print"></i></a>
+                           
                             </td>
                         </tr>
 
