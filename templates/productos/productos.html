@@ -1,4 +1,5 @@
 {% extends 'index.html' %}{% block content %}
+{% load humanize %}
 
 <div class="container-fluid">
 
@@ -15,7 +16,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Agregar</a>
+                <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                    
                     <thead>
@@ -47,14 +48,13 @@
                         <tr>
                             <td>{{producto.id}}</td>
                             <td>{{producto.nombre}}</td>
-                            <td>{{producto.valor_neto}}</td>
-                            <td>{{producto.valor_publico}}</td>
+                            <td>$ {{producto.valor_neto | intcomma }}</td>
+                            <td>$ {{producto.valor_publico | intcomma }}</td>
                             <td>{{producto.cantidad}}</td>
                             <td>{{producto.categoria_id}}</td>
                             <td>
-                            <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
+                            <a href="" class="btn btn-primary" ><i class="fa-solid fa-circle-plus"></i></a>
                             <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
 
@@ -70,6 +70,30 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar producto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="post">
+                {% csrf_token %}
+                {{formulario}}
+                <hr>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
 
 </div>
 

@@ -14,19 +14,46 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
+       
         
         </div>
+    
 
-        <form action="" class="" >
-            <label for="">Fecha inicio</label>
-            <input type="date">
-            <label for="">Fecha fin</label>
-            <input type="date">
-            <button class="btn btn-primary" > consultar</button>
-        </form>
+        <div class="container">
+
+            
+        <form method="post"> 
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Fecha inicio</label>
+              <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="fecha_inicio">
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Fecha Fin</label>
+              <input type="date" class="form-control" id="exampleInputPassword1" name="fecha_fin">
+            </div>
+           
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Consultar</button>
+          </form>
+
+
+        </div>
+
 
         <div class="card-body">
             <div class="table-responsive">
+                <div class="cont">
+                    <a href="" class="btn btn-success right"><i class="fa-solid fa-book-open"></i> Ver todos</a>
+                </div>
+                <style>
+                    .cont{
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                </style>
+           
                 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                    
@@ -64,8 +91,8 @@
                             <td>{{recibo.documento}}</td>
                             <td>$ {{recibo.total |intcomma }}</td>
                             <td>
-                            <a href="" class="btn btn-success" ><i class="fa-solid fa-eye"></i></a>
-                            <a href="" class="btn btn-primary"><i class="fa-solid fa-print"></i></a>
+                            <!-- <a href="" class="btn btn-success" ><i class="fa-solid fa-eye"></i></a> -->
+                            <a href="{% url 'detalle_recibo' recibo.numero_recibo %}" class="btn btn-primary"><i class="fa-solid fa-print"></i></a>
                            
                             </td>
                         </tr>
@@ -79,6 +106,7 @@
 
                     </tbody>
                 </table>
+                <div><h1>Total: ${{total.0.total | intcomma }}</h1></div>
             </div>
         </div>
     </div>

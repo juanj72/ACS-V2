@@ -15,7 +15,8 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Agregar</a>
+                <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
+
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                    
                     <thead>
@@ -60,6 +61,30 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar producto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="post">
+                {% csrf_token %}
+                {{formulario}}
+                <hr>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 </div>
 
