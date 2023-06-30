@@ -213,7 +213,7 @@ FROM
     venta_detalle det ON det.recibo_id = re.id
         INNER JOIN
     venta_estado est ON est.id = re.estado_id
-    inner join producto pro on det.producto_id=pro.id
+    inner join producto pro on det.producto_id=pro.id and re.estado_id = 2
     
     group by re.id
         """
@@ -268,7 +268,7 @@ FROM
     venta_estado est ON est.id = re.estado_id
     inner join producto pro on det.producto_id=pro.id
     
-    where date(re.fecha) between date('{fecha_inicio}') and date('{fecha_fin}')
+    where date(re.fecha) between date('{fecha_inicio}') and date('{fecha_fin}') and re.estado_id = 2
     
     group by re.id
         """
