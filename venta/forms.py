@@ -7,6 +7,8 @@ class detalleVentaForm(forms.ModelForm):
             super().__init__(*args, **kwargs)
             for field_name, field in self.fields.items():
                 field.widget.attrs['class'] = 'form-control'
+    
+    cantidad=forms.ChoiceField(choices=[(x,x) for x in range(1,51)])
 
     class Meta:
         model = detalle

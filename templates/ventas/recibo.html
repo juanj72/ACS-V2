@@ -16,7 +16,7 @@
         
         .container {
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 800px;
             padding: 20px;
             background-color: #f5f5f5;
             border: 1px solid #ddd;
@@ -78,11 +78,14 @@
     <div class="container" id="content">
         <div class="header">
             <h1>Recibo</h1>
+ 
+            <b>Nit : 21190372</b>
         </div>
         <div class="invoice-details">
-            <p>Fecha: {{recibo.fecha}} <br>Cliente: {{recibo.cliente.nombre}} {{recibo.cliente.apellido}} <br>Usuario: {{recibo.user.first_name}} </p>
+            <p>Fecha: {{recibo.fecha}} <br>Cliente: {{recibo.cliente.nombre}} {{recibo.cliente.apellido}} <br>Documento: {{recibo.cliente.documento}} <br>Usuario: {{recibo.user.first_name}} <br> Número de recibo: <b>{{recibo.id}}</b></p>
            
             <img src="{% static 'img/logo.png' %}" alt="Logo de la empresa" class="logo">
+          
         </div>
         <div class="invoice-items">
             <table>

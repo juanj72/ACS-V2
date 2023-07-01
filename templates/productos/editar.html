@@ -1,0 +1,11 @@
+{% extends 'index.html' %}{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{formulario}}
+
+<hr>
+<button type="submit" class="btn btn-primary btn-block" ><i class="fa-solid fa-floppy-disk"></i> Guardar cambios</button>
+</form>
+
+{% endblock %}
