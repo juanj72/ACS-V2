@@ -31,3 +31,14 @@ def asignarClienteVenta(request):
     clientes = cliente.objects.all()
 
     return render (request,'clientes/venta.html',{'clientes':clientes})
+
+def editar(request,id):
+    formulario = formulario_cliente(request.POST or None,instance=cliente.objects.get(id=id))
+    if request.method == 'POST':
+        if formulario.is_valid:
+            formulario.save()
+            return redirect('clientes')
+        else:
+            formulario.errors
+
+    return render(request,'clientes/edit.html',{'formulario':formulario})

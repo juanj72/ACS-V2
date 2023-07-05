@@ -14,7 +14,7 @@ class recibo (models.Model):
     cliente=models.ForeignKey(cliente, on_delete=models.SET_NULL, null=True)
     estado = models.ForeignKey(estado,on_delete=models.SET_NULL,null=True,default=1)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=False)
-    fecha = models.DateTimeField(auto_created=True,null=True,auto_now=True)
+    fecha = models.DateTimeField(null=True,auto_now=True)
     
     
 class detalle (models.Model):

@@ -5,6 +5,7 @@ from cliente.views import *
 urlpatterns = [
     path('listado/',clientes,name='clientes'),
     path('crear/',crearCliente,name='crearCliente'),
-    path('ventaAsignar/',asignarClienteVenta,name='asignarVenta')
+    path('ventaAsignar/',asignarClienteVenta,name='asignarVenta'),
+    path('editar/<id>',editar,name='editar_cliente')
 
 ]
