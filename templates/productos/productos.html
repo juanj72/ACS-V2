@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Productos</h1>
+    <h1 class="h3 mb-2 text-gray-800"><i class="fa-solid fa-truck-ramp-box"></i> <b>Productos</b> </h1>
     <p class="mb-4">Aquí encontrarás el listado de todos los productos regisstrados
     </p>
 
@@ -24,8 +24,12 @@
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
+                            {% if request.user.rol.id == 1 %}
                             <th>Valor neto</th>
+                            
+                            {% endif %}
                             <th>Valor público</th>
+
                             <th>Cantidad</th>
                             <th>Categoría</th>
                             <th>Acción</th>
@@ -35,7 +39,10 @@
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
+                            {% if request.user.rol.id == 1 %}
                             <th>Valor neto</th>
+                           
+                            {% endif %}
                             <th>Valor público</th>
                             <th>Cantidad</th>
                             <th>Categoría</th>
@@ -48,13 +55,18 @@
                         <tr>
                             <td>{{producto.id}}</td>
                             <td>{{producto.nombre}}</td>
+                            {% if request.user.rol.id == 1 %}
                             <td>$ {{producto.valor_neto | intcomma }}</td>
+                            {% endif %}
+                            
                             <td>$ {{producto.valor_publico | intcomma }}</td>
                             <td>{{producto.cantidad}}</td>
                             <td>{{producto.categoria}}</td>
                             <td>
                             <a href="{% url 'addcantidad' producto.id %}" class="btn btn-primary" ><i class="fa-solid fa-circle-plus"></i></a>
+                            {% if request.user.rol.id == 1 %}
                             <a href="{% url 'editar_producto' producto.id %}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                            {% endif %}
                             </td>
                         </tr>
 
