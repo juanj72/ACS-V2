@@ -1,0 +1,95 @@
+{% extends 'index.html' %}{% block content %}
+{% load humanize %}
+
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Listado de los 5 productos mas vendidos</h6>
+               
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Código de producto</th>
+                                <th>Nombre</th>
+                                <th>Cantidad vendida</th>
+                                <th>Valor público</th>
+                                <th>Valor vendido</th>
+                              
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Código de producto</th>
+                                <th>Nombre</th>
+                                <th>Cantidad vendida</th>
+                                <th>Valor público</th>
+                                <th>Valor vendido</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            {% for producto in productos %}
+
+                            <tr>
+                                <td>{{producto.id}}</td>
+                                <td>{{producto.nombre}}</td>
+                                <td>{{producto.cantidad_vendida}}</td>
+                                <td>$ {{producto.valor_publico |intcomma }}</td>
+                                <td>$ {{producto.valor_vendido_publico |intcomma }}</td>
+                                
+                            </tr>
+
+                            {% endfor %}
+
+                                                                  
+           
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                  
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
