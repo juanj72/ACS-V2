@@ -62,6 +62,9 @@ def reportes(request):
   
     return render(request,'reportes/general.html',{'productos':productos_mas})
 
+def detalle_reporte(request):
+    return render(request,'reportes/detallados.html')
+
 
 def productos_mas_vendidos():
      with connection.cursor() as cursor:  # Activamos un cursor para las consultas a la BD
