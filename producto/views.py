@@ -59,6 +59,7 @@ def editar_categoría(request,id):
 
 def reportes(request):
     productos_mas = productos_mas_vendidos()
+   
   
     return render(request,'reportes/general.html',{'productos':productos_mas})
 
@@ -79,8 +80,8 @@ FROM
         INNER JOIN
     producto p ON p.id = v.producto_id
 GROUP BY p.id
-ORDER BY  SUM(v.cantidad)*p.valor_publico DESC
-LIMIT 5
+
+
 
         """
 
