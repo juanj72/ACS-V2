@@ -9,15 +9,16 @@
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Listado de los 5 productos mas vendidos</h6>
-               
+                <h6 class="m-0 font-weight-bold text-primary">Listado de los 5
+                    productos mas vendidos</h6>
+
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                
 
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable"
+                        width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Código de producto</th>
@@ -25,7 +26,7 @@
                                 <th>Cantidad vendida</th>
                                 <th>Valor público</th>
                                 <th>Valor vendido</th>
-                              
+
                             </tr>
                         </thead>
                         <tfoot>
@@ -46,20 +47,16 @@
                                 <td>{{producto.nombre}}</td>
                                 <td>{{producto.cantidad_vendida}}</td>
                                 <td>$ {{producto.valor_publico |intcomma }}</td>
-                                <td>$ {{producto.valor_vendido_publico |intcomma }}</td>
-                                
+                                <td>$ {{producto.valor_vendido_publico |intcomma
+                                    }}</td>
+
                             </tr>
 
                             {% endfor %}
 
-                                                                  
-           
-
                         </tbody>
                     </table>
                 </div>
-
-
 
             </div>
         </div>
@@ -71,25 +68,59 @@
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Reportes</h6>
                 <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                  
+
                 </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Descargar
+                    Reporte
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5"
+                                    id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close"
+                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save
+                                    changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-           
+
             </div>
         </div>
     </div>
-</div>
 
+
+    
+
+
+
+</div>
 
 {% endblock %}
