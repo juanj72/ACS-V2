@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db import connection
 
+#Editando 
+
 # Create your views here.
 @login_required
 def index(request):
