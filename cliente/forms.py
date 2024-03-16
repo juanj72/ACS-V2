@@ -11,5 +11,5 @@ class formulario_cliente(forms.ModelForm):
 
 
     class Meta:
-        model = cliente
+        model = Cliente
         fields = '__all__'

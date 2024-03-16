@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from venta.models import *
-from cliente.models import cliente
+from cliente.models import Cliente
 from venta.forms import *
 from django.db.models import F
 from django.db import connection
@@ -14,7 +14,7 @@ def venta(request):
 def crearrecibo(request,client):
 
     reb = recibo(
-        cliente = cliente.objects.get(id=client),
+        cliente = Cliente.objects.get(id=client),
         user=request.user
     )
     reb.save()

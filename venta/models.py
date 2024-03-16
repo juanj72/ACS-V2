@@ -1,5 +1,5 @@
 from django.db import models
-from cliente.models import cliente
+from cliente.models import Cliente
 from producto.models import producto
 from user.models import User
 from django.utils.timezone import now
@@ -11,12 +11,12 @@ class estado (models.Model):
         return str(self.id)+'. '+str(self.nombre)
 
 class recibo (models.Model):
-    cliente=models.ForeignKey(cliente, on_delete=models.SET_NULL, null=True)
+    cliente=models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
     estado = models.ForeignKey(estado,on_delete=models.SET_NULL,null=True,default=1)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=False)
     fecha = models.DateTimeField(auto_created=True,default=now)
-    
-    
+
+
 class detalle (models.Model):
     producto=models.ForeignKey(producto,on_delete=models.SET_NULL,null=True)
     cantidad = models.IntegerField()
@@ -26,7 +26,3 @@ class detalle (models.Model):
 class log_anulados(models.Model):
     motivo = models.TextField()
     recibo = models.ForeignKey(recibo,on_delete=models.SET_NULL,null=True)
-
-
-
-    

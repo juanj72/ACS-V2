@@ -5,7 +5,7 @@ from cliente.forms import *
 
 
 def clientes(request):
-    clientes=cliente.objects.all()
+    clientes=Cliente.objects.all()
 
     return render (request,'clientes/clientes.html',{'clientes':clientes})
 
@@ -28,12 +28,12 @@ def crearCliente(request):
 
 
 def asignarClienteVenta(request):
-    clientes = cliente.objects.all()
+    clientes = Cliente.objects.all()
 
     return render (request,'clientes/venta.html',{'clientes':clientes})
 
 def editar(request,id):
-    formulario = formulario_cliente(request.POST or None,instance=cliente.objects.get(id=id))
+    formulario = formulario_cliente(request.POST or None,instance=Cliente.objects.get(id=id))
     if request.method == 'POST':
         if formulario.is_valid:
             formulario.save()
