@@ -21,10 +21,11 @@ from user.views import cerrar_sesion
 
 urlpatterns = [
     path('admin/', admin.site.urls,name='adminsite'),
-    path('',include('user.url')),
-    path('productos/',include('producto.url')),
-    path('clientes/',include('cliente.url')),
-    path('ventas/',include('venta.url')),
-    path('accounts/',include('django.contrib.auth.urls')),
-    path('logout/',cerrar_sesion,name='logout')
+    path('api/', include('cliente.urls'))
+    # path('',include('user.url')),
+    # path('productos/',include('producto.url')),
+    # path('clientes/',include('cliente.url')),
+    # path('ventas/',include('venta.url')),
+    # path('accounts/',include('django.contrib.auth.urls')),
+    # path('logout/',cerrar_sesion,name='logout')
 ]
