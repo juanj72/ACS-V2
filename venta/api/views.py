@@ -32,7 +32,8 @@ class DetalleVentaListView(APIView):
         if (recibo.estado.id != 1):
             return Response({'message': 'El estado del recibo es 1'}, status=status.HTTP_404_NOT_FOUND)
 
-        productos = Detalle.objects.filter(recibo=recibo).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
+        productos = Detalle.objects.filter(recibo=recibo).annotate(
+            resultado=F('cantidad') * F('producto__valor_publico'))
         detalle_serializer = DetalleSerializer(productos, many=True)
 
         total = total_detalle(recibo_id)
@@ -42,3 +43,22 @@ class DetalleVentaListView(APIView):
             'productos': detalle_serializer.data,
             'total': total
         }, status=status.HTTP_200_OK)
+
+
+class CerrarReciboView(APIView):
+
+    def put(self, request, recibo_id, *args, **kwargs):
+        recibo = Recibo.objects.get(id=recibo_id)
+
+        if (recibo.estado.id == 1):
+            # Asigna el nuevo valor de estado (por ejemplo, 2)
+            nuevo_estado = Estado.objects.get(id=2)
+            recibo.estado = nuevo_estado  # Asigna el nuevo estado al recibo
+
+            recibo.save()
+
+            serializer = ReciboSerializer(recibo)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response({'message': '404 - PÁGINA NO ENCONTRADA'}, status=status.HTTP_404_NOT_FOUND)
