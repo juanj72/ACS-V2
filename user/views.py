@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from venta.models import recibo,estado
+from venta.models import Recibo,Estado
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db import connection
@@ -7,7 +7,7 @@ from django.db import connection
 # Create your views here.
 @login_required
 def index(request):
-    recibos = recibo.objects.filter(estado=estado.objects.get(id=1))
+    recibos = Recibo.objects.filter(estado=Estado.objects.get(id=1))
     print(len(recibos))
     return render(request,'index.html',{'recibos':recibos,'cantidad':len(recibos),'valor_inventario':total_inventario(),'total_stock':total_stock(),'total_vendido':total_vendido()})
 

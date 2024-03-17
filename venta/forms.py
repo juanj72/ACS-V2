@@ -11,7 +11,7 @@ class detalleVentaForm(forms.ModelForm):
     cantidad=forms.ChoiceField(choices=[(x,x) for x in range(1,51)])
 
     class Meta:
-        model = detalle
+        model = Detalle
         fields = '__all__'
         widgets = {
              'recibo':forms.HiddenInput()
