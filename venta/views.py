@@ -49,7 +49,7 @@ def detalleventa(request,reb):
                 if formulario.is_valid:
 
                     data=formulario
-                    pro = producto.objects.get(id=data.data['producto'])
+                    pro = Producto.objects.get(id=data.data['producto'])
                     if int(data.data['cantidad'])>pro.cantidad:
                         print('la cantidad supera el limite en stock')
                         error = True
@@ -72,7 +72,7 @@ def detalleventa(request,reb):
 def eliminardetail(request,id,reb):
     re = Recibo.objects.get(id=reb)
     detail = Detalle.objects.get(id=id)
-    pro=producto.objects.get(id=detail.producto.id)
+    pro=Producto.objects.get(id=detail.producto.id)
     pro.cantidad=int(pro.cantidad)+int(detail.cantidad)
     pro.save()
 
@@ -152,7 +152,7 @@ def anular(request,id):
             
             if len(detalles)>0:
                 for det in detalles:
-                    productos = producto.objects.get(id=det.producto.id)
+                    productos = Producto.objects.get(id=det.producto.id)
                     productos.cantidad = int(productos.cantidad)+int(det.cantidad)
                     productos.save()
                 reb.estado=estados

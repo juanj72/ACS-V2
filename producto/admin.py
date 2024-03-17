@@ -3,5 +3,5 @@ from producto.models import *
 
 # Register your models here.
 
-admin.site.register(producto)
-admin.site.register(categoria)
+admin.site.register(Producto)
+admin.site.register(Categoria)

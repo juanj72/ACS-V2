@@ -1,5 +1,5 @@
 from django import forms
-from producto.models import producto,categoria
+from producto.models import Producto,Categoria
 
 
 
@@ -9,7 +9,7 @@ class productoForm(forms.ModelForm):
             for field_name, field in self.fields.items():
                 field.widget.attrs['class'] = 'form-control'
     class Meta:
-        model = producto
+        model = Producto
         fields = '__all__'
 
 
@@ -19,7 +19,7 @@ class categoriaForm(forms.ModelForm):
             for field_name, field in self.fields.items():
                 field.widget.attrs['class'] = 'form-control'
     class Meta:
-        model = categoria
+        model = Categoria
         fields = '__all__'
 
 class productoADDcant(forms.ModelForm):
@@ -28,5 +28,5 @@ class productoADDcant(forms.ModelForm):
             for field_name, field in self.fields.items():
                 field.widget.attrs['class'] = 'form-control'
     class Meta:
-          model = producto
+          model = Producto
           fields = ['cantidad']

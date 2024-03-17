@@ -6,7 +6,7 @@ from django.db import connection
 # Create your views here.
 
 def productos (request):
-    productos= producto.objects.all()
+    productos= Producto.objects.all()
     formulario = productoForm(request.POST or None)
 
     if request.method=='POST':
@@ -17,7 +17,7 @@ def productos (request):
     return render(request,'productos/productos.html',{'productos':productos,'formulario':formulario})
 
 def categorias(request):
-    categorias=categoria.objects.all()
+    categorias=Categoria.objects.all()
     formulario = categoriaForm(request.POST or None)
     if request.method=='POST':
         if formulario.is_valid:
@@ -28,7 +28,7 @@ def categorias(request):
 
 
 def addcantidadpro(request,pro):
-    prod=producto.objects.get(id=pro)
+    prod=Producto.objects.get(id=pro)
    
     if request.method=='POST':
         prod.cantidad = int(prod.cantidad)+int(request.POST.get('cantidad'))
@@ -39,7 +39,7 @@ def addcantidadpro(request,pro):
     return render (request,'productos/addcantidad.html',{'producto':prod})
 
 def editar_producto(request,id):
-    formulario = productoForm(request.POST or None,instance=producto.objects.get(id=id))
+    formulario = productoForm(request.POST or None,instance=Producto.objects.get(id=id))
 
     if request.method=='POST':
       
@@ -49,7 +49,7 @@ def editar_producto(request,id):
     return render (request,'productos/editar.html',{'formulario':formulario})
 
 def editar_categoría(request,id):
-    formulario = categoriaForm(request.POST or None,instance=categoria.objects.get(id=id))
+    formulario = categoriaForm(request.POST or None,instance=Categoria.objects.get(id=id))
     if request.method=='POST':
         if formulario.is_valid():
             formulario.save()
