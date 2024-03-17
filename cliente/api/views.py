@@ -14,6 +14,9 @@ class ClientesListView(APIView):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+class ClienteCreateView(APIView):
+
     def post(self, request, *args, **kwargs):
         serializer = ClienteSerializer(data=request.data)
 
@@ -29,7 +32,8 @@ class ClienteView(APIView):
 
     def patch(self, request, cliente_id, *args, **kwargs):
         cliente = Cliente.objects.get(id=cliente_id)
-        serializer = ClienteSerializer(cliente, data=request.data, partial=True)
+        serializer = ClienteSerializer(
+            cliente, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
