@@ -13,7 +13,7 @@ def venta(request):
 
 def crearrecibo(request,client):
 
-    reb = recibo(
+    reb = Recibo(
         cliente = Cliente.objects.get(id=client),
         user=request.user
     )
@@ -27,12 +27,12 @@ def crearrecibo(request,client):
 
 def detalleventa(request,reb):
 
-    re = recibo.objects.get(id=reb)
+    re = Recibo.objects.get(id=reb)
     if re.estado.id!=1:
         return HttpResponse('404')
        
     else:
-        productos=detalle.objects.filter(recibo = re).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
+        productos=Detalle.objects.filter(recibo = re).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
         formulario = detalleVentaForm(request.POST or None,initial={'recibo':re})
         detalle_total = total_detalle(reb)
         error = False
@@ -70,8 +70,8 @@ def detalleventa(request,reb):
 
 
 def eliminardetail(request,id,reb):
-    re = recibo.objects.get(id=reb)
-    detail = detalle.objects.get(id=id)
+    re = Recibo.objects.get(id=reb)
+    detail = Detalle.objects.get(id=id)
     pro=producto.objects.get(id=detail.producto.id)
     pro.cantidad=int(pro.cantidad)+int(detail.cantidad)
     pro.save()
@@ -129,9 +129,9 @@ WHERE
 
 
 def cerrarrecibo(request,id):
-    recibos = recibo.objects.get(id=id)
+    recibos = Recibo.objects.get(id=id)
     if recibos.estado.id == 1:
-        recibos.estado = estado.objects.get(id=2)
+        recibos.estado = Estado.objects.get(id=2)
         recibos.save()
         return redirect('okventa',id)
     else:
@@ -139,11 +139,11 @@ def cerrarrecibo(request,id):
 
 
 def anular(request,id):
-    detalles = detalle.objects.filter(recibo = id)
-    reb=recibo.objects.get(id=id)
+    detalles = Detalle.objects.filter(recibo = id)
+    reb=Recibo.objects.get(id=id)
     if reb.estado.id==3:
         return HttpResponse('404 :( , PAGINA NO ENCONTRADA')
-    estados=estado.objects.get(id=3)
+    estados=Estado.objects.get(id=3)
     formulario = anularForm(request.POST or None,initial={'recibo':reb})
     print(len(detalles))
 
@@ -172,8 +172,8 @@ def anular(request,id):
 
 
 def detalle_recibo(request,id):
-    recibos = recibo.objects.get(id=id)
-    detalles=detalle.objects.filter(recibo=recibos).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
+    recibos = Recibo.objects.get(id=id)
+    detalles=Detalle.objects.filter(recibo=recibos).annotate(resultado=F('cantidad') * F('producto__valor_publico'))
     total = total_detalle(id)
 
     return render (request,'ventas/recibo.html',{'detalle':detalles,'recibo':recibos,'total':total})
