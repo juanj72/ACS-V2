@@ -13,7 +13,7 @@
         body {
             font-family: Arial, sans-serif;
         }
-        
+
         .container {
             margin: 20px auto;
             max-width: 800px;
@@ -22,52 +22,52 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
-        
+
         .invoice-details {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
         }
-        
+
         .invoice-details p {
             margin: 0;
         }
-        
+
         .invoice-details .logo {
             width: 150px;
         }
-        
+
         .invoice-items {
             margin-bottom: 20px;
         }
-        
+
         .invoice-items table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .invoice-items th,
         .invoice-items td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
+
         .invoice-items th {
             background-color: #f5f5f5;
         }
-        
+
         .invoice-total {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
         }
-        
+
         .invoice-total p {
             margin: 0;
             font-weight: bold;
@@ -78,15 +78,15 @@
     <div class="container" id="content">
         <div class="header">
             <h1>Recibo</h1>
- 
+
             <b>Nit : 21190372</b> <br>
             <b>Norbely Álvarez Ladino</b>
         </div>
         <div class="invoice-details">
             <p>Fecha: {{recibo.fecha}} <br>Cliente: {{recibo.cliente.nombre}} {{recibo.cliente.apellido}} <br>Documento: {{recibo.cliente.documento}} <br>Usuario: {{recibo.user.first_name}} <br> Número de recibo: <b>{{recibo.id}}</b></p>
-           
+
             <img src="{% static 'img/logo.png' %}" alt="Logo de la empresa" class="logo">
-          
+
         </div>
         <div class="invoice-items">
             <table>
@@ -107,7 +107,7 @@
                         <td>$ {{detalle.resultado | intcomma }}</td>
                     </tr>
                     {% endfor %}
-                  
+
                 </tbody>
             </table>
         </div>

@@ -12,21 +12,21 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
-        
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                   
+
                     <thead>
-                        
+
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
                             {% if request.user.rol.id == 1 %}
                             <th>Valor neto</th>
-                            
+
                             {% endif %}
                             <th>Valor público</th>
 
@@ -41,7 +41,7 @@
                             <th>Nombre</th>
                             {% if request.user.rol.id == 1 %}
                             <th>Valor neto</th>
-                           
+
                             {% endif %}
                             <th>Valor público</th>
                             <th>Cantidad</th>
@@ -58,7 +58,7 @@
                             {% if request.user.rol.id == 1 %}
                             <td>$ {{producto.valor_neto | intcomma }}</td>
                             {% endif %}
-                            
+
                             <td>$ {{producto.valor_publico | intcomma }}</td>
                             <td>{{producto.cantidad}}</td>
                             <td>{{producto.categoria}}</td>
@@ -72,10 +72,10 @@
 
                         {%endfor%}
 
-                     
-                      
-          
-       
+
+
+
+
 
                     </tbody>
                 </table>
@@ -101,7 +101,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              
+
             </div>
           </div>
         </div>

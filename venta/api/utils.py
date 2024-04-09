@@ -45,4 +45,4 @@ def total_detalle(recibo_id):
         # Construir una lista de diccionarios a partir de los resultados de la consulta
         data = [dict(zip(columns, row)) for row in cursor.fetchall()]
 
-        return (data)
+        return data

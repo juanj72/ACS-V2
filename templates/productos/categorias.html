@@ -11,21 +11,21 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
-        
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <button href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                   
+
                     <thead>
-                        
+
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>Acción</th>
-                            
+
                         </tr>
                     </thead>
                     <tfoot>
@@ -41,20 +41,20 @@
                         <tr>
                             <td>{{categoria.id}}</td>
                             <td>{{categoria.nombre}}</td>
-                         
+
                             <td>
                             <a href="" class="btn btn-primary" ><i class="fa-solid fa-eye"></i></a>
                             <a href="{% url 'editar_categoría' categoria.id %}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                         
+
                             </td>
                         </tr>
 
                         {%endfor%}
 
-                     
-                      
-          
-       
+
+
+
+
 
                     </tbody>
                 </table>
@@ -79,7 +79,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              
+
             </div>
           </div>
         </div>
