@@ -15,9 +15,7 @@ class Producto(models.Model):
     valor_neto = models.IntegerField()
     valor_publico = models.IntegerField()
     cantidad = models.IntegerField()
-    categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True, blank=True
-    )
+    categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return (

@@ -34,9 +34,7 @@ def asignarClienteVenta(request):
 
 
 def editar(request, id):
-    formulario = formulario_cliente(
-        request.POST or None, instance=Cliente.objects.get(id=id)
-    )
+    formulario = formulario_cliente(request.POST or None, instance=Cliente.objects.get(id=id))
     if request.method == "POST":
         if formulario.is_valid:
             formulario.save()

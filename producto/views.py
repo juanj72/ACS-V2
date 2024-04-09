@@ -50,9 +50,7 @@ def addcantidadpro(request, pro):
 
 
 def editar_producto(request, id):
-    formulario = productoForm(
-        request.POST or None, instance=Producto.objects.get(id=id)
-    )
+    formulario = productoForm(request.POST or None, instance=Producto.objects.get(id=id))
 
     if request.method == "POST":
         if formulario.is_valid():
@@ -62,9 +60,7 @@ def editar_producto(request, id):
 
 
 def editar_categoría(request, id):
-    formulario = categoriaForm(
-        request.POST or None, instance=Categoria.objects.get(id=id)
-    )
+    formulario = categoriaForm(request.POST or None, instance=Categoria.objects.get(id=id))
     if request.method == "POST":
         if formulario.is_valid():
             formulario.save()

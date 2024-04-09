@@ -28,9 +28,7 @@ def detalleventa(request, reb):
         return HttpResponse("404")
 
     else:
-        productos = Detalle.objects.filter(recibo=re).annotate(
-            resultado=F("cantidad") * F("producto__valor_publico")
-        )
+        productos = Detalle.objects.filter(recibo=re).annotate(resultado=F("cantidad") * F("producto__valor_publico"))
         formulario = detalleVentaForm(request.POST or None, initial={"recibo": re})
         detalle_total = total_detalle(reb)
         error = False
@@ -171,9 +169,7 @@ def anular(request, id):
 
 def detalle_recibo(request, id):
     recibos = Recibo.objects.get(id=id)
-    detalles = Detalle.objects.filter(recibo=recibos).annotate(
-        resultado=F("cantidad") * F("producto__valor_publico")
-    )
+    detalles = Detalle.objects.filter(recibo=recibos).annotate(resultado=F("cantidad") * F("producto__valor_publico"))
     total = total_detalle(id)
 
     return render(
@@ -189,16 +185,10 @@ def listar(request):
     if request.method == "POST":
         print(request.POST)
         if request.POST.get("fecha_inicio") and request.POST.get("fecha_fin"):
-            recibos = consulta_fechas(
-                request.POST.get("fecha_inicio"), request.POST.get("fecha_fin")
-            )
-            totall = total_fecha(
-                request.POST.get("fecha_inicio"), request.POST.get("fecha_fin")
-            )
+            recibos = consulta_fechas(request.POST.get("fecha_inicio"), request.POST.get("fecha_fin"))
+            totall = total_fecha(request.POST.get("fecha_inicio"), request.POST.get("fecha_fin"))
 
-    return render(
-        request, "ventas/verventas.html", {"recibos": recibos, "total": totall}
-    )
+    return render(request, "ventas/verventas.html", {"recibos": recibos, "total": totall})
 
 
 def recibos_lista():

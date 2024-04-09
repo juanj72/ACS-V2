@@ -63,6 +63,4 @@ class CerrarReciboView(APIView):
 
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-        return Response(
-            {"message": "404 - PÁGINA NO ENCONTRADA"}, status=status.HTTP_404_NOT_FOUND
-        )
+        return Response({"message": "404 - PÁGINA NO ENCONTRADA"}, status=status.HTTP_404_NOT_FOUND)

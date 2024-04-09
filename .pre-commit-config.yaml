@@ -14,6 +14,8 @@ repos:
     hooks:
       - id: black
         alias: autoformat
+        args:
+          - -l 120
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
