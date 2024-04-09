@@ -21,6 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls, name="adminsite"),
     path("api/", include("cliente.urls")),
     path("api/", include("venta.urls")),
+    path("api/", include("producto.urls")),
     # path('',include('user.url')),
     # path('productos/',include('producto.url')),
     # path('clientes/',include('cliente.url')),

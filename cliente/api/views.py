@@ -27,7 +27,7 @@ class ClienteCreateView(APIView):
 
 
 class ClienteView(APIView):
-    def patch(self, request, cliente_id, *args, **kwargs):
+    def put(self, request, cliente_id, *args, **kwargs):
         cliente = Cliente.objects.get(id=cliente_id)
         serializer = ClienteSerializer(cliente, data=request.data, partial=True)
 
